@@ -67,11 +67,11 @@ async def zerox(
     prior_page = ""
     aggregated_markdown: List[str] = []
     start_time = datetime.now()
-    
+
     # File Path Validators
     if not file_path:
         raise FileUnavailable()
-    
+
     # Create an instance of the litellm model interface
     vision_model = litellmmodel(model=model,**kwargs)
 
@@ -116,7 +116,7 @@ async def zerox(
         local_path = await download_file(file_path=file_path, temp_dir=temp_directory)
         if not local_path:
             raise FileUnavailable()
-        
+
         raw_file_name = os.path.splitext(os.path.basename(local_path))[0]
         file_name = "".join(c.lower() if c.isalnum() else "_" for c in raw_file_name)
         # Truncate file name to 255 characters to prevent ENAMETOOLONG errors
@@ -124,9 +124,9 @@ async def zerox(
 
         # create a subset pdf in temp dir with only the requested pages if select_pages is provided
         if select_pages is not None:
-            subset_pdf_create_kwargs = {"original_pdf_path":local_path, "select_pages":select_pages, 
+            subset_pdf_create_kwargs = {"original_pdf_path":local_path, "select_pages":select_pages,
                                     "save_directory":temp_directory, "suffix":"_selected_pages"}
-            local_path = await asyncio.to_thread(create_selected_pages_pdf, 
+            local_path = await asyncio.to_thread(create_selected_pages_pdf,
                                                  **subset_pdf_create_kwargs)
 
         # Convert the file to a series of images, below function returns a list of image paths in page order

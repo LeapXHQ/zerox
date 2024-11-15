@@ -44,13 +44,13 @@ def is_valid_url(string: str) -> bool:
         ]
     except ValueError:
         return False
-    
-def create_selected_pages_pdf(original_pdf_path: str, select_pages: Union[int, Iterable[int]], 
+
+def create_selected_pages_pdf(original_pdf_path: str, select_pages: Union[int, Iterable[int]],
                               save_directory: str, suffix: str = "_selected_pages",
                               sorted_pages: bool = True) -> str:
     """
     Creates a new PDF with only the selected pages.
-    
+
     :param original_pdf_path: Path to the original PDF file.
     :type original_pdf_path: str
     :param select_pages: A single page number or an iterable of page numbers (1-indexed).
@@ -72,7 +72,7 @@ def create_selected_pages_pdf(original_pdf_path: str, select_pages: Union[int, I
     # Ensure select_pages is iterable, if not, convert to list
     if isinstance(select_pages, int):
         select_pages = [select_pages]
-    
+
     if sorted_pages:
         # Sort the pages for consistency
         select_pages = sorted(list(select_pages))

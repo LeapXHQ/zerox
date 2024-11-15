@@ -56,7 +56,7 @@ async def process_page(
                 prior_page,
             )
 
-    image_path = os.path.join(temp_directory, image)
+    image_path = os.path.join(image)
 
     # Get the completion from LiteLLM
     try:
