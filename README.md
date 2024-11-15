@@ -24,6 +24,9 @@ Zerox is available as both a Node and Python package.
 - [Node Readme](#node-zerox) - [npm package](https://www.npmjs.com/package/zerox)
 - [Python Readme](#python-zerox) - [pip package](https://pypi.org/project/py-zerox/)
 
+## Python version
+  3.11.x
+
 ## Node Zerox
 
 ```sh
